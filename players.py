@@ -119,6 +119,8 @@ def main():
     #print opponent list to file (test)           
     a = list()
     for player in playerDict:
+        #Change your atts to this down here
+        #print(playerDict[player].getAttributes())
         atts = vars(playerDict[player])
         a.append(atts)
     for line in a:
