@@ -1,5 +1,5 @@
 from glicko2 import Player
-from matches02 import getParticipants
+from matches import getParticipants
 
 
 #use ben's getParticipants and compares its dictionary values to the input dict's values 
