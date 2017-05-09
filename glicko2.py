@@ -203,7 +203,7 @@ class Player:
         opponentList = self.opponentList
         resultList = self.resultList
         
-        return rating, name, rd, vol, opponentList, resultList
+        return name, rating, rd, vol, opponentList, resultList
         
 
  
