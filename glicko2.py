@@ -194,6 +194,17 @@ class Player:
         
         """
         self._preRatingRD()
+        
+    def getAttributes(self):
+        rating = self.rating
+        name = self.name
+        rd = self.rd
+        vol = self.vol
+        opponentList = self.opponentList
+        resultList = self.resultList
+        
+        return name, rating, rd, vol, opponentList, resultList
+        
 
  
 
