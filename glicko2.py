@@ -35,22 +35,15 @@ class Player:
         # For testing purposes, preload the values
         # assigned to an unrated player.
         self.rating = rating
+        self.name = name
         self.rd = rd
         self.vol = vol
         self.opponentList = []
         self.resultList = []
-        self.name = name
 
     _tau = 1.0
 
-    @property
-    def name(self):
-        return name
-
-    @name.setter
-    def name(self, name):
-        self.name = name
-
+    
     @property
     def rating(self):
         return (self.__rating * 173.7178) + 1500
@@ -201,4 +194,6 @@ class Player:
         
         """
         self._preRatingRD()
+
+ 
 
