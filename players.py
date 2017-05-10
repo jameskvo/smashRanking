@@ -39,7 +39,7 @@ def addPlayerMatches(playerDict, playerList, matches):
     for x in range(1, len(matchOutput), 4):
         if matchOutput[x] > matchOutput[x+2]:
             if matchOutput[x-1] in playerDict:
-                #print("a)
+                #print("a")
                 playerDict[matchOutput[x-1]].addMatch(matchOutput[x+1], 1)
             if matchOutput[x+1] in playerDict:
                     #print("b")
@@ -54,16 +54,19 @@ def addPlayerMatches(playerDict, playerList, matches):
                 playerDict[matchOutput[x+1]].addMatch(matchOutput[x-1], 1)
                 
     return playerDict
-                    
-def print_dict(d):
-    new = {}
-    for k, v in d.items():
-        if isinstance(v, dict):
-            v = print_dict(v)
-        new[k.replace('{', '')] = v
-        new[k.replace(':', '')] = v
-    return new
 
+#unfinished                    
+def readElo(playerInfo):
+    fileToOpen = open(playerInfo, "r")
+    file = fileToOpen.read()
+    file = file.splitlines()
+    file.pop(0)
+    
+    for line in file:
+        print(line[0])
+    
+
+    
 def main():
     #input text file of existing players
     while(True):
@@ -100,49 +103,31 @@ def main():
         #print(player)
         outputFile.write(player + "\n")
     outputFile.close()
-    
-    #player objects to be created
 
-    #print(playerDict)
+
     matchInput = input("Enter the name of your matches file: " )
     playerDict = addPlayerMatches(playerDict, playerDict, matchInput)
     
-
     
+    #print player objects to output file    
     file = open("text.txt", "w")
     file.write("")
     file.close()
     file = open("text.txt", "a")
-    
 
-
-    #print opponent list to file (test)           
-    a = list()
+    outputList = list()
     for player in playerDict:
-        #Change your atts to this down here
-        #print(playerDict[player].getAttributes())
-        atts = vars(playerDict[player])
-        a.append(atts)
-    for line in a:
-        file.write(str(line))
+        atts = (playerDict[player].getAttributes())
+        outputList.append(atts)
+        
+    file.write("name, rating, rd, vol, opponentList, resultList(0 = loss, 1 = win)\n")
+    
+    for line in outputList:
+        file.write(str(line).replace("(", "").replace(")", "").replace("'", "").replace(",", ""))
         file.write("\n")
     file.close()    
     
-    file = open("text.txt", "r")
-    file1 = open("lol.txt", "w")
-    
-    file = file.read() 
-    file = file.splitlines()
-
-    for line in file:
-        file1.write(line.replace("{'_", "").replace("}","").replace("'",""))
-        #file1.write(line.replace("}", ""))
-       # print(line.replace("{", ""))
-        file1.write("\n")
-
-
-
-    
+    readElo("text.txt")
     
 main()
 
