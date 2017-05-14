@@ -2,6 +2,8 @@ from glicko2 import Player
 from matches import getParticipants
 
 #no inactivity implementation, no dq handling
+#problem if a player object doesn't exist ie. add new player a? and you decline
+#if player b has a match with player a it messes up
 
 
 #use ben's getParticipants and compares its dictionary values to the input dict's values 
@@ -136,10 +138,10 @@ def main():
     
     
     #print player objects to output file    
-    file = open("text.txt", "w")
+    file = open(playerListFile, "w")
     file.write("")
     file.close()
-    file = open("text.txt", "a")
+    file = open(playerListFile, "a")
    
     outputList = list()
     for player in playerDict:
