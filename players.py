@@ -8,6 +8,7 @@ from matches import getParticipants
 #if the program is only able to write names and to output file, readElo bugs out 
 #because it will try to convert strings to floats or something
 
+#fix readElo input
 
 #use ben's getParticipants and compares its dictionary values to the input dict's values 
 #returns a list of players
@@ -78,7 +79,7 @@ def updatePlayers(playerDict):
 #updates playerDict with player info from input file
 def readElo(playerInfoInput, playerDict):
     
-    fileToOpen = open("text.txt", "r")
+    fileToOpen = open("player.txt", "r")
     file = fileToOpen.read()
     file = file.splitlines()
     try:
@@ -122,7 +123,7 @@ def main():
     readElo(playerList, playerDict)
     
     #get rid of hardcode later
-    name = "edmmelee-SmashAtCASE042817Melee"
+    name = "edmmelee-SmashAtCase032417"
     apiKey = "iRZrPhoDkyLV2xFXyUuJ5pVauosMlZPGMMmCdSaE"
    
     players = getParticipants(name, apiKey)
